@@ -23,6 +23,19 @@ app.get('/delete', function (req, res) {
     res.sendStatus(200);
 });
 
+app.get('/delSel', function (req, res) {
+    let arr = req.query.indArr;
+    console.log(arr);
+    arr.sort();
+    arr.reverse();
+    console.log(arr);
+    for (let i = 0; i < arr.length; i++) {
+        let temp = arr[i];
+        servArr.splice(temp, 1);
+    }
+    res.send(arr);
+});
+
 app.get('/update', function (req, res) {
     console.log(req.query);
     servArr.splice(Number(req.query.index), 1, req.query.val.toString());
